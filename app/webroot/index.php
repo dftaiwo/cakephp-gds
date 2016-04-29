@@ -16,6 +16,11 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) 
+{  
+  define('TMP', "gs://cakephp-gds");  
+}
+
 /**
  * Use the DS to separate the directories in other defines
  */
@@ -102,7 +107,10 @@ if (!empty($failed)) {
 	trigger_error("CakePHP core could not be found. Check the value of CAKE_CORE_INCLUDE_PATH in APP/webroot/index.php. It should point to the directory containing your " . DS . "cake core directory and your " . DS . "vendors root directory.", E_USER_ERROR);
 }
 
-App::uses('Dispatcher', 'Routing');
+App::uses('Dispatcher', 'Routing');  
+$_SERVER['SCRIPT_FILENAME'] = __FILE__;  
+$_SERVER['PHP_SELF'] = 'webroot/index.php';  
+
 
 $Dispatcher = new Dispatcher();
 $Dispatcher->dispatch(
