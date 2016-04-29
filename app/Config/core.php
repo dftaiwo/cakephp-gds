@@ -354,6 +354,11 @@
  *       and their settings.
  */
 $engine = 'File';
+	
+if(!(function_exists('php_sapi_name') && php_sapi_name() === 'cli' OR defined('STDIN'))){
+	$engine='Memcache';
+}
+
 
 // In development mode, caches should expire quickly.
 $duration = '+999 days';

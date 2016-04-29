@@ -18,7 +18,7 @@
 
 if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) 
 {  
-  define('TMP', "gs://cakephp-gds");  
+  define('TMP', "gs://cakephp-gds/");  
 }
 
 /**
