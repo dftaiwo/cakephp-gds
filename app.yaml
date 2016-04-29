@@ -1,0 +1,22 @@
+application: cakephp-gds
+version: 1
+
+runtime: php55
+api_version: 1
+
+threadsafe: true  
+handlers:  
+- url: /css
+  static_dir: app/webroot/css
+- url: /js
+  static_dir: app/webroot/js
+- url: /img  
+  static_dir: app/webroot/img  
+  
+
+- url: /favico.ico  
+  static_files: app/webroot/favico.png
+  upload: app/webroot/favico.png
+ 
+- url : /.*
+  script: app/webroot/index.php  
