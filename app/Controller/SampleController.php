@@ -6,7 +6,7 @@ class SampleController extends AppController {
 
 	function index() {
 		$conditions=['Book.id'=>"6122080743456768"];
-		pr($this->Book->find('first',compact('conditions','order','limit','fields')));
+		pr($this->Book->read(null,"6122080743456768"));
 	}
 
 }
