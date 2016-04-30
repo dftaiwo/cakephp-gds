@@ -21,9 +21,14 @@
  * @since         CakePHP(tm) v 0.10.8.2117
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+$engine = 'File';
+	
+if(!(function_exists('php_sapi_name') && php_sapi_name() === 'cli' OR defined('STDIN'))){
+	$engine='Memcache';
+}
 
 // Setup a 'default' cache configuration for use in the application.
-Cache::config('default', array('engine' => 'File'));
+Cache::config('default', array('engine' => $engine));
 
 /**
  * The settings below can be used to set additional paths to models, views and controllers.
@@ -109,3 +114,5 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+CakePlugin::load('GDS');
